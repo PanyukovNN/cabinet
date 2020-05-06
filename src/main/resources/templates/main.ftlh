@@ -17,7 +17,7 @@
     </div>
     <div>Список сообщений</div>
     <form method="get" action="/main">
-        <input type="text" name="filter" value="${filter?ifExists}">
+        <input type="text" name="filter" value="${filter!}">
         <button type="submit">Найти</button>
     </form>
     <#list messages as message>
@@ -27,8 +27,8 @@
             <i>${message.tag}</i>
             <strong>${message.userName}</strong>
             <div>
-                <#if message.filename>
-                    <img src="/img/${message.filename!}">
+                <#if message.filename??>
+                    <img src="/img/${message.filename}">
                 </#if>
             </div>
         </div>
